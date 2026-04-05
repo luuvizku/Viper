@@ -1,4 +1,4 @@
-# 🌌 Nebula Launcher
+# 🌌 Nebula Client
 
 **Nebula** is a next-generation Minecraft launcher focused on performance, simplicity, and a clean modern experience.
 
