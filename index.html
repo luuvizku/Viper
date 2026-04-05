@@ -1,113 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nebula</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nebula Launcher</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-body{
+*{
   margin:0;
+  padding:0;
+  box-sizing:border-box;
   font-family:'Orbitron',sans-serif;
-  background:linear-gradient(135deg,#1a1140,#050816);
-  color:white;
-  text-align:center;
-  overflow:hidden;
 }
 
-/* HERO */
+body{
+  background: radial-gradient(circle at 30% 20%, #1a1140, #050816 70%);
+  color:white;
+  overflow-x:hidden;
+}
+
+/* ===== Stars ===== */
+.stars{
+  position:fixed;
+  inset:0;
+  z-index:0;
+}
+
+.star{
+  position:absolute;
+  width:2px;
+  height:2px;
+  background:white;
+  border-radius:50%;
+  opacity:0.6;
+  animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle{
+  0%,100%{opacity:0.2;}
+  50%{opacity:1;}
+}
+
+/* ===== HERO ===== */
 .hero{
   height:100vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
+  text-align:center;
+  position:relative;
+  z-index:2;
 }
 
-/* 🔥 BIG PREMIUM LOGO */
+/* ===== REAL PREMIUM LOGO ===== */
 .logo{
-  width:120px;
-  height:120px;
-  border-radius:50%;
-  background:conic-gradient(#7c7cff,#a855f7,#22d3ee,#7c7cff);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin-bottom:20px;
-  animation:spin 6s linear infinite;
-  box-shadow:0 0 40px rgba(120,80,255,0.8);
+  width:110px;
+  height:110px;
+  margin-bottom:25px;
+  filter: drop-shadow(0 0 25px rgba(120,80,255,0.8));
 }
 
-.logo::after{
-  content:"";
-  width:70px;
-  height:70px;
-  background:#050816;
-  border-radius:50%;
-  box-shadow:0 0 25px rgba(0,200,255,0.7) inset;
-}
-
-/* TEXT */
+/* ===== TEXT ===== */
 h1{
-  font-size:70px;
-  background:linear-gradient(90deg,#7cc7ff,#c084ff,#5eead4);
+  font-size:72px;
+  letter-spacing:4px;
+  background: linear-gradient(90deg,#7cc7ff,#c084ff,#5eead4);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
-/* BUTTON */
+.subtitle{
+  margin-top:10px;
+  font-size:14px;
+  color:#7dd3fc;
+  letter-spacing:2px;
+}
+
+p{
+  margin-top:12px;
+  color:#cbd5e1;
+}
+
+/* ===== BUTTON ===== */
+.downloads{
+  margin-top:35px;
+}
+
 .btn{
-  margin-top:30px;
-  padding:15px 30px;
+  padding:14px 30px;
   border-radius:14px;
-  text-decoration:none;
   color:white;
-  border:1px solid rgba(255,255,255,0.3);
-  background:rgba(255,255,255,0.05);
+  text-decoration:none;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(12px);
   transition:0.3s;
 }
 
 .btn:hover{
-  box-shadow:0 0 25px rgba(120,80,255,0.7);
+  transform:translateY(-3px) scale(1.04);
+  box-shadow:0 0 30px rgba(120,80,255,0.6);
 }
 
-/* ⬇️ BIG ARROW */
-.arrow{
+/* ===== SCROLL ARROW ===== */
+.scroll{
   position:absolute;
-  bottom:40px;
-  font-size:40px;
-  animation:bounce 1.5s infinite;
-  color:#7dd3fc;
+  bottom:30px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  opacity:0.8;
+  animation: float 2s infinite;
 }
 
-@keyframes bounce{
+.scroll span{
+  width:16px;
+  height:16px;
+  border-bottom:3px solid #7dd3fc;
+  border-right:3px solid #7dd3fc;
+  transform:rotate(45deg);
+  margin:5px;
+}
+
+@keyframes float{
   0%,100%{transform:translateY(0);}
-  50%{transform:translateY(15px);}
+  50%{transform:translateY(12px);}
 }
 
-@keyframes spin{
-  from{transform:rotate(0);}
-  to{transform:rotate(360deg);}
+/* ===== FEATURES ===== */
+.features{
+  padding:80px 20px;
+  text-align:center;
+}
+
+.feature-grid{
+  margin-top:40px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.card{
+  padding:25px;
+  border-radius:18px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 30px rgba(120,80,255,0.3);
+  border-color:rgba(120,80,255,0.4);
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  color:#94a3b8;
 }
 </style>
 </head>
 
 <body>
 
-<div class="hero">
+<div class="stars" id="stars"></div>
 
-  <div class="logo"></div>
+<section class="hero">
+
+  <!-- 🔥 REAL NEBULA LOGO -->
+  <div class="logo">
+    <svg viewBox="0 0 100 100" width="100%" height="100%">
+      <defs>
+        <radialGradient id="core" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="40%" stop-color="#c084ff"/>
+          <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <!-- outer orbit -->
+      <path d="M50 10 A40 40 0 1 1 30 85"
+        fill="none"
+        stroke="url(#core)"
+        stroke-width="4"
+        stroke-linecap="round">
+        <animateTransform attributeName="transform"
+          type="rotate"
+          from="0 50 50"
+          to="360 50 50"
+          dur="6s"
+          repeatCount="indefinite"/>
+      </path>
+
+      <!-- inner orbit -->
+      <path d="M50 20 A30 30 0 1 0 70 75"
+        fill="none"
+        stroke="#7dd3fc"
+        stroke-width="3"
+        stroke-linecap="round">
+        <animateTransform attributeName="transform"
+          type="rotate"
+          from="360 50 50"
+          to="0 50 50"
+          dur="4s"
+          repeatCount="indefinite"/>
+      </path>
+
+      <!-- core -->
+      <circle cx="50" cy="50" r="8" fill="white">
+        <animate attributeName="r"
+          values="7;9;7"
+          dur="2s"
+          repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
 
   <h1>NEBULA</h1>
+  <div class="subtitle">LAUNCH BEYOND LIMITS</div>
+  <p>High-performance Minecraft launcher built for smooth gameplay.</p>
 
-  <a href="#" class="btn">Download for Windows</a>
+  <div class="downloads">
+    <a href="downloads/NebulaSetup.exe" class="btn">Download for Windows</a>
+  </div>
 
-  <!-- ⬇️ VERY VISIBLE -->
-  <div class="arrow">↓</div>
+  <!-- ⬇️ SCROLL ARROW -->
+  <div class="scroll">
+    <span></span>
+    <span></span>
+  </div>
 
-</div>
+</section>
+
+<section class="features">
+  <h2>Why Nebula?</h2>
+
+  <div class="feature-grid">
+    <div class="card"><h3>High FPS</h3><p>Maximum performance boost.</p></div>
+    <div class="card"><h3>Mods Ready</h3><p>Pre-installed essentials.</p></div>
+    <div class="card"><h3>Clean UI</h3><p>Modern and smooth design.</p></div>
+    <div class="card"><h3>Secure</h3><p>Safe and trusted updates.</p></div>
+  </div>
+</section>
+
+<footer>© 2026 Nebula Launcher</footer>
+
+<script>
+const stars = document.getElementById('stars');
+
+for(let i=0;i<80;i++){
+  const s = document.createElement('div');
+  s.className='star';
+  s.style.top=Math.random()*100+'%';
+  s.style.left=Math.random()*100+'%';
+  s.style.opacity=Math.random();
+  stars.appendChild(s);
+}
+</script>
 
 </body>
 </html>
