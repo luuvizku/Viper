@@ -1,94 +1,204 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Nebula Client</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: radial-gradient(circle at top, #1a0033, #000000);
-      color: white;
-      text-align: center;
-      overflow: hidden;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nebula Launcher</title>
 
-    h1 {
-      font-size: 60px;
-      margin-top: 150px;
-      background: linear-gradient(90deg, #a855f7, #6366f1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 
-    p {
-      font-size: 20px;
-      color: #ccc;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Orbitron', sans-serif;
+}
 
-    .btn {
-      margin-top: 30px;
-      padding: 15px 30px;
-      font-size: 18px;
-      border: none;
-      border-radius: 10px;
-      background: linear-gradient(90deg, #7c3aed, #4f46e5);
-      color: white;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+body {
+  color: white;
+  overflow-x: hidden;
+}
 
-    .btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 20px #7c3aed;
-    }
+/* 🌌 Minecraft-style background */
+body::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: url("https://images.unsplash.com/photo-1606112219348-204d7d8b94ee") center/cover no-repeat;
+  filter: brightness(0.3);
+  z-index: -2;
+}
 
-    /* Stars */
-    .stars {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: transparent;
-      overflow: hidden;
-    }
+/* 🌌 Nebula overlay */
+body::after {
+  content: "";
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(124,58,237,0.3), transparent 60%),
+              radial-gradient(circle, rgba(0,245,255,0.2), transparent 60%);
+  animation: move 20s linear infinite;
+  z-index: -1;
+}
 
-    .stars span {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: white;
-      animation: move 10s linear infinite;
-    }
+@keyframes move {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(-10%, -10%); }
+  100% { transform: translate(0,0); }
+}
 
-    @keyframes move {
-      from {
-        transform: translateY(0);
-      }
-      to {
-        transform: translateY(100vh);
-      }
-    }
-  </style>
+/* Navbar */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 35px;
+}
+
+.logo span {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Hero */
+.hero {
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 70px;
+  background: linear-gradient(90deg, #00f5ff, #a855f7);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  margin-top: 15px;
+  color: #ccc;
+}
+
+/* Buttons */
+.downloads {
+  margin-top: 40px;
+  display: flex;
+  gap: 20px;
+}
+
+.btn {
+  padding: 15px 35px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  color: white;
+  text-decoration: none;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(124,58,237,0.7);
+}
+
+/* Features */
+.features {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.feature-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 20px;
+}
+
+.card {
+  background: rgba(255,255,255,0.05);
+  padding: 25px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+footer {
+  padding: 20px;
+  text-align: center;
+  color: #aaa;
+}
+</style>
 </head>
+
 <body>
 
-<div class="stars">
-  <!-- tähdet -->
-  <span style="left:10%; animation-delay:0s;"></span>
-  <span style="left:20%; animation-delay:2s;"></span>
-  <span style="left:30%; animation-delay:4s;"></span>
-  <span style="left:40%; animation-delay:1s;"></span>
-  <span style="left:50%; animation-delay:3s;"></span>
-  <span style="left:60%; animation-delay:5s;"></span>
-  <span style="left:70%; animation-delay:2s;"></span>
-  <span style="left:80%; animation-delay:6s;"></span>
-  <span style="left:90%; animation-delay:1s;"></span>
-</div>
+<nav>
+  <div class="logo">
+    <img src="logo.png">
+    <span>NEBULA</span>
+  </div>
+</nav>
 
-<h1>🌌 Nebula Client</h1>
-<p>The next-generation Minecraft experience</p>
+<section class="hero">
+  <h1>NEBULA</h1>
+  <p>The next-generation Minecraft launcher.</p>
 
-<button class="btn">Download</button>
+  <div class="downloads">
+    <a href="downloads/NebulaSetup.exe" class="btn">Download for Windows</a>
+    <a href="downloads/Nebula.dmg" class="btn">Download for Mac</a>
+  </div>
+</section>
+
+<section class="features">
+  <h2>Why Nebula?</h2>
+
+  <div class="feature-grid">
+    <div class="card">
+      <h3>⚡ High FPS</h3>
+      <p>Boost your performance and reduce lag.</p>
+    </div>
+    <div class="card">
+      <h3>🎮 Built-in Mods</h3>
+      <p>All essential mods included.</p>
+    </div>
+    <div class="card">
+      <h3>🎨 Clean UI</h3>
+      <p>Modern and simple interface.</p>
+    </div>
+    <div class="card">
+      <h3>🔒 Secure</h3>
+      <p>Safe and regularly updated.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+© 2026 Nebula Launcher
+</footer>
 
 </body>
 </html>
+```
