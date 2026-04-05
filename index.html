@@ -8,159 +8,142 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Orbitron', sans-serif;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Orbitron',sans-serif;
 }
 
-body {
-  color: white;
-  overflow-x: hidden;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #061a3a, #0b3d91);
+body{
+  color:white;
+  min-height:100vh;
+  overflow-x:hidden;
+  background: linear-gradient(180deg, #050b1a, #0b2a55);
 }
 
-/* 🌌 subtle floating stars */
-.stars {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 0;
+/* very subtle stars (reduced clutter) */
+.stars{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
 }
 
-.star {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: white;
-  opacity: 0.15;
-  animation: float 25s linear infinite;
+.star{
+  position:absolute;
+  width:2px;
+  height:2px;
+  background:white;
+  opacity:0.08;
 }
 
-@keyframes float {
-  from { transform: translateY(100vh); }
-  to { transform: translateY(-10vh); }
+/* simple minecraft-like cube logo */
+.logo{
+  position:absolute;
+  top:6%;
+  left:50%;
+  transform:translateX(-50%);
+  width:70px;
+  height:70px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-template-rows:repeat(3,1fr);
+  gap:2px;
+  z-index:2;
 }
 
-/* Center top icon */
-.logo {
-  position: absolute;
-  top: 6%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #ffffff, #4aa3ff);
-  box-shadow: 0 0 25px rgba(74,163,255,0.4);
-  z-index: 2;
+.logo div{
+  background: linear-gradient(145deg, #4aa3ff, #1b6cff);
+  border-radius:2px;
+  box-shadow:0 0 6px rgba(74,163,255,0.4);
 }
 
-/* Hero */
-.hero {
-  height: 85vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  z-index: 2;
+.hero{
+  height:85vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  position:relative;
+  z-index:2;
 }
 
-.hero h1 {
-  font-size: 70px;
-  background: linear-gradient(90deg, #00f5ff, #a855f7);
-  -webkit-background-clip: text;
-  color: transparent;
+.hero h1{
+  font-size:64px;
+  color:#7cc7ff;
 }
 
-.hero p {
-  margin-top: 15px;
-  color: #ccc;
+.hero p{
+  margin-top:12px;
+  color:#cfd8e3;
 }
 
-/* Buttons */
-.downloads {
-  margin-top: 40px;
-  display: flex;
-  gap: 20px;
+.downloads{
+  margin-top:35px;
 }
 
-.btn {
-  padding: 15px 35px;
-  border-radius: 30px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  transition: 0.3s;
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(10px);
-  color: white;
-  text-decoration: none;
+.btn{
+  padding:14px 30px;
+  border-radius:25px;
+  background:rgba(255,255,255,0.08);
+  color:white;
+  text-decoration:none;
+  backdrop-filter:blur(8px);
+  transition:0.2s;
 }
 
-.btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(124,58,237,0.7);
+.btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 15px rgba(74,163,255,0.5);
 }
 
-.features {
-  padding: 80px 20px;
-  text-align: center;
-  position: relative;
-  z-index: 2;
+.features{
+  padding:60px 20px;
+  text-align:center;
+  position:relative;
+  z-index:2;
 }
 
-.feature-grid {
-  margin-top: 40px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 20px;
+.feature-grid{
+  margin-top:30px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
 }
 
-.card {
-  background: rgba(255,255,255,0.05);
-  padding: 25px;
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-  transition: 0.3s;
+.card{
+  background:rgba(255,255,255,0.04);
+  padding:20px;
+  border-radius:12px;
 }
 
-.card:hover {
-  transform: translateY(-10px);
-}
-
-footer {
-  padding: 20px;
-  text-align: center;
-  color: #aaa;
+footer{
+  text-align:center;
+  padding:20px;
+  color:#7a8aa0;
 }
 </style>
 </head>
 
 <body>
 
-<!-- stars -->
+<!-- minimal stars -->
 <div class="stars">
-  <div class="star" style="left:10%; animation-duration:22s;"></div>
-  <div class="star" style="left:20%; animation-duration:18s;"></div>
-  <div class="star" style="left:30%; animation-duration:28s;"></div>
-  <div class="star" style="left:40%; animation-duration:24s;"></div>
-  <div class="star" style="left:50%; animation-duration:30s;"></div>
-  <div class="star" style="left:60%; animation-duration:26s;"></div>
-  <div class="star" style="left:70%; animation-duration:20s;"></div>
-  <div class="star" style="left:80%; animation-duration:27s;"></div>
-  <div class="star" style="left:90%; animation-duration:23s;"></div>
+  <div class="star" style="top:10%;left:15%"></div>
+  <div class="star" style="top:25%;left:70%"></div>
+  <div class="star" style="top:40%;left:30%"></div>
+  <div class="star" style="top:60%;left:80%"></div>
+  <div class="star" style="top:75%;left:50%"></div>
 </div>
 
-<!-- new icon (center top) -->
-<div class="logo"></div>
+<!-- minecraft-style cube logo -->
+<div class="logo">
+  <div></div><div></div><div></div>
+  <div></div><div></div><div></div>
+  <div></div><div></div><div></div>
+</div>
 
 <section class="hero">
   <h1>NEBULA</h1>
@@ -176,20 +159,20 @@ footer {
 
   <div class="feature-grid">
     <div class="card">
-      <h3>⚡ High FPS</h3>
-      <p>Boost your performance and reduce lag.</p>
+      <h3>High FPS</h3>
+      <p>Better performance and smoother gameplay.</p>
     </div>
     <div class="card">
-      <h3>🎮 Built-in Mods</h3>
-      <p>All essential mods included.</p>
+      <h3>Built-in Mods</h3>
+      <p>Essential tools included.</p>
     </div>
     <div class="card">
-      <h3>🎨 Clean UI</h3>
-      <p>Modern and simple interface.</p>
+      <h3>Clean UI</h3>
+      <p>Simple and modern design.</p>
     </div>
     <div class="card">
-      <h3>🔒 Secure</h3>
-      <p>Safe and regularly updated.</p>
+      <h3>Secure</h3>
+      <p>Safe updates and protection.</p>
     </div>
   </div>
 </section>
