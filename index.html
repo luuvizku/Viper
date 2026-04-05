@@ -98,6 +98,32 @@ body{
   padding:20px;
 }
 
+.logo{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:34px;
+  margin-bottom:20px;
+
+  background: radial-gradient(circle, rgba(120,80,255,0.6), rgba(0,200,255,0.2));
+  border:1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 0 25px rgba(120,80,255,0.6),
+    0 0 50px rgba(0,200,255,0.3);
+
+  animation: pulse 3s infinite ease-in-out;
+}
+
+@keyframes pulse{
+  0%,100%{ transform:scale(1); }
+  50%{ transform:scale(1.08); }
+}
+
 h1{
   font-size:72px;
   letter-spacing:4px;
@@ -183,22 +209,6 @@ p{
   box-shadow:0 0 25px rgba(120,120,255,0.25);
 }
 
-/* ===== Stats ===== */
-.stats{
-  display:flex;
-  justify-content:center;
-  gap:40px;
-  margin-top:40px;
-  font-size:14px;
-  color:#94a3b8;
-}
-
-.stat span{
-  display:block;
-  font-size:20px;
-  color:#7dd3fc;
-}
-
 /* ===== Footer ===== */
 footer{
   text-align:center;
@@ -219,6 +229,9 @@ footer{
 <div class="stars" id="stars"></div>
 
 <section class="hero">
+
+  <div class="logo">✦</div>
+
   <h1>NEBULA</h1>
   <div class="subtitle">LAUNCH BEYOND LIMITS</div>
   <p>A sleek, high-performance Minecraft launcher built for speed, simplicity, and power.</p>
@@ -228,11 +241,6 @@ footer{
     <a href="#" class="btn secondary">Learn More</a>
   </div>
 
-  <div class="stats">
-    <div class="stat"><span>60+</span>FPS Boost</div>
-    <div class="stat"><span>100%</span>Free</div>
-    <div class="stat"><span>Fast</span>Updates</div>
-  </div>
 </section>
 
 <section class="features">
