@@ -1,139 +1,94 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VIPER Client</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <title>Nebula Client</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Orbitron', sans-serif;
-    }
-
     body {
-      background: linear-gradient(135deg, #0a0a0f, #111827);
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #1a0033, #000000);
       color: white;
       text-align: center;
+      overflow: hidden;
     }
 
-    header {
-      padding: 20px;
-      font-size: 24px;
-      font-weight: 700;
-      letter-spacing: 2px;
-    }
-
-    .hero {
-      height: 90vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .hero h1 {
-      font-size: 64px;
-      background: linear-gradient(90deg, #00f5ff, #7c3aed);
+    h1 {
+      font-size: 60px;
+      margin-top: 150px;
+      background: linear-gradient(90deg, #a855f7, #6366f1);
       -webkit-background-clip: text;
-      color: transparent;
+      -webkit-text-fill-color: transparent;
     }
 
-    .hero p {
-      margin-top: 20px;
-      font-size: 18px;
-      color: #aaa;
+    p {
+      font-size: 20px;
+      color: #ccc;
     }
 
-    .download-btn {
-      margin-top: 40px;
-      padding: 15px 40px;
+    .btn {
+      margin-top: 30px;
+      padding: 15px 30px;
       font-size: 18px;
       border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      background: linear-gradient(90deg, #00f5ff, #7c3aed);
+      border-radius: 10px;
+      background: linear-gradient(90deg, #7c3aed, #4f46e5);
       color: white;
+      cursor: pointer;
       transition: 0.3s;
     }
 
-    .download-btn:hover {
+    .btn:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 20px rgba(124, 58, 237, 0.7);
+      box-shadow: 0 0 20px #7c3aed;
     }
 
-    .features {
-      padding: 60px 20px;
+    /* Stars */
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      overflow: hidden;
     }
 
-    .features h2 {
-      font-size: 36px;
-      margin-bottom: 30px;
+    .stars span {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      animation: move 10s linear infinite;
     }
 
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: #1f2937;
-      padding: 20px;
-      border-radius: 15px;
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-10px);
-    }
-
-    footer {
-      padding: 20px;
-      color: #666;
-      font-size: 14px;
+    @keyframes move {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(100vh);
+      }
     }
   </style>
 </head>
 <body>
 
-<header>VIPER CLIENT</header>
+<div class="stars">
+  <!-- tähdet -->
+  <span style="left:10%; animation-delay:0s;"></span>
+  <span style="left:20%; animation-delay:2s;"></span>
+  <span style="left:30%; animation-delay:4s;"></span>
+  <span style="left:40%; animation-delay:1s;"></span>
+  <span style="left:50%; animation-delay:3s;"></span>
+  <span style="left:60%; animation-delay:5s;"></span>
+  <span style="left:70%; animation-delay:2s;"></span>
+  <span style="left:80%; animation-delay:6s;"></span>
+  <span style="left:90%; animation-delay:1s;"></span>
+</div>
 
-<section class="hero">
-  <h1>VIPER</h1>
-  <p>The best Minecraft launcher. Fast. Clean. Powerful.</p>
-  <button class="download-btn">Download Now</button>
-</section>
+<h1>🌌 Nebula Client</h1>
+<p>The next-generation Minecraft experience</p>
 
-<section class="features">
-  <h2>Why VIPER?</h2>
-  <div class="feature-grid">
-    <div class="card">
-      <h3>⚡ Performance</h3>
-      <p>Boost your FPS and eliminate lag.</p>
-    </div>
-    <div class="card">
-      <h3>🎮 Mods</h3>
-      <p>Built-in mods for PvP and survival.</p>
-    </div>
-    <div class="card">
-      <h3>🔒 Secure</h3>
-      <p>Safe and regularly updated.</p>
-    </div>
-    <div class="card">
-      <h3>🎨 Custom UI</h3>
-      <p>Clean and modern interface.</p>
-    </div>
-  </div>
-</section>
-
-<footer>
-  © 2026 VIPER Client. Not affiliated with Mojang.
-</footer>
+<button class="btn">Download</button>
 
 </body>
 </html>
-```
