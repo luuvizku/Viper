@@ -22,7 +22,7 @@ body{
   background:#050816;
 }
 
-/* ===== Nebula background ===== */
+/* ===== Background ===== */
 .nebula{
   position:fixed;
   inset:-200px;
@@ -38,29 +38,6 @@ body{
 @keyframes floatNebula{
   0%{ transform: translate3d(0,0,0) scale(1); }
   100%{ transform: translate3d(30px,-20px,0) scale(1.05); }
-}
-
-/* ===== Floating orbs ===== */
-.orb{
-  position:fixed;
-  width:200px;
-  height:200px;
-  border-radius:50%;
-  background: radial-gradient(circle, rgba(120,80,255,0.4), transparent 70%);
-  filter: blur(60px);
-  animation: floatOrb 20s infinite alternate ease-in-out;
-  z-index:0;
-}
-
-.orb:nth-child(2){
-  left:70%;
-  top:60%;
-  background: radial-gradient(circle, rgba(0,200,255,0.3), transparent 70%);
-}
-
-@keyframes floatOrb{
-  0%{ transform:translateY(0px); }
-  100%{ transform:translateY(-60px); }
 }
 
 /* ===== Stars ===== */
@@ -89,7 +66,7 @@ body{
 .hero{
   position:relative;
   z-index:2;
-  height:90vh;
+  height:100vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -98,30 +75,18 @@ body{
   padding:20px;
 }
 
+/* ===== REAL LOGO ===== */
 .logo{
-  width:80px;
-  height:80px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:34px;
+  width:90px;
+  height:90px;
   margin-bottom:20px;
-
-  background: radial-gradient(circle, rgba(120,80,255,0.6), rgba(0,200,255,0.2));
-  border:1px solid rgba(255,255,255,0.2);
-  backdrop-filter: blur(10px);
-
-  box-shadow:
-    0 0 25px rgba(120,80,255,0.6),
-    0 0 50px rgba(0,200,255,0.3);
-
-  animation: pulse 3s infinite ease-in-out;
+  filter: drop-shadow(0 0 20px rgba(120,80,255,0.7));
+  animation: spin 12s linear infinite;
 }
 
-@keyframes pulse{
-  0%,100%{ transform:scale(1); }
-  50%{ transform:scale(1.08); }
+@keyframes spin{
+  from{ transform:rotate(0deg); }
+  to{ transform:rotate(360deg); }
 }
 
 h1{
@@ -155,9 +120,6 @@ p{
 }
 
 .btn{
-  display:inline-flex;
-  align-items:center;
-  gap:12px;
   padding:14px 26px;
   border-radius:14px;
   text-decoration:none;
@@ -166,12 +128,6 @@ p{
   border:1px solid rgba(255,255,255,0.15);
   backdrop-filter: blur(10px);
   transition:0.25s;
-  position:relative;
-  overflow:hidden;
-}
-
-.btn.secondary{
-  opacity:0.7;
 }
 
 .btn:hover{
@@ -209,7 +165,6 @@ p{
   box-shadow:0 0 25px rgba(120,120,255,0.25);
 }
 
-/* ===== Footer ===== */
 footer{
   text-align:center;
   padding:20px;
@@ -223,14 +178,22 @@ footer{
 <body>
 
 <div class="nebula"></div>
-<div class="orb"></div>
-<div class="orb"></div>
-
 <div class="stars" id="stars"></div>
 
 <section class="hero">
 
-  <div class="logo">✦</div>
+  <!-- 🔥 Custom SVG Logo -->
+  <svg class="logo" viewBox="0 0 100 100">
+    <defs>
+      <radialGradient id="g" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#c084ff"/>
+        <stop offset="50%" stop-color="#7cc7ff"/>
+        <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <circle cx="50" cy="50" r="30" fill="url(#g)" />
+    <circle cx="50" cy="50" r="10" fill="#ffffff" opacity="0.9"/>
+  </svg>
 
   <h1>NEBULA</h1>
   <div class="subtitle">LAUNCH BEYOND LIMITS</div>
@@ -238,7 +201,6 @@ footer{
 
   <div class="downloads">
     <a href="downloads/NebulaSetup.exe" class="btn">Download for Windows</a>
-    <a href="#" class="btn secondary">Learn More</a>
   </div>
 
 </section>
