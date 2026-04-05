@@ -20,7 +20,6 @@ body{
   overflow-x:hidden;
   color:white;
   background:#050816;
-  position:relative;
 }
 
 /* ===== Nebula background ===== */
@@ -41,6 +40,29 @@ body{
   100%{ transform: translate3d(30px,-20px,0) scale(1.05); }
 }
 
+/* ===== Floating orbs ===== */
+.orb{
+  position:fixed;
+  width:200px;
+  height:200px;
+  border-radius:50%;
+  background: radial-gradient(circle, rgba(120,80,255,0.4), transparent 70%);
+  filter: blur(60px);
+  animation: floatOrb 20s infinite alternate ease-in-out;
+  z-index:0;
+}
+
+.orb:nth-child(2){
+  left:70%;
+  top:60%;
+  background: radial-gradient(circle, rgba(0,200,255,0.3), transparent 70%);
+}
+
+@keyframes floatOrb{
+  0%{ transform:translateY(0px); }
+  100%{ transform:translateY(-60px); }
+}
+
 /* ===== Stars ===== */
 .stars{
   position:fixed;
@@ -55,7 +77,6 @@ body{
   height:2px;
   background:white;
   border-radius:50%;
-  opacity:0.6;
   animation: twinkle 3s infinite ease-in-out;
 }
 
@@ -64,7 +85,7 @@ body{
   50%{ opacity:1; transform:scale(1.6); }
 }
 
-/* ===== Layout ===== */
+/* ===== Hero ===== */
 .hero{
   position:relative;
   z-index:2;
@@ -85,14 +106,26 @@ h1{
   -webkit-text-fill-color:transparent;
 }
 
+.subtitle{
+  margin-top:10px;
+  font-size:14px;
+  color:#7dd3fc;
+  letter-spacing:2px;
+}
+
 p{
   margin-top:12px;
   color:#cbd5e1;
+  max-width:500px;
 }
 
-/* ===== Windows Button ===== */
+/* ===== Buttons ===== */
 .downloads{
   margin-top:35px;
+  display:flex;
+  gap:15px;
+  flex-wrap:wrap;
+  justify-content:center;
 }
 
 .btn{
@@ -111,39 +144,13 @@ p{
   overflow:hidden;
 }
 
-.btn::before{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  background:linear-gradient(90deg,#4aa3ff,#a855f7,#22d3ee);
-  opacity:0;
-  transition:0.25s;
-  filter:blur(10px);
-  z-index:-1;
+.btn.secondary{
+  opacity:0.7;
 }
 
 .btn:hover{
   transform:translateY(-2px) scale(1.03);
   box-shadow:0 0 25px rgba(100,150,255,0.4);
-}
-
-.btn:hover::before{
-  opacity:0.8;
-}
-
-/* Windows icon */
-.win-icon{
-  width:18px;
-  height:18px;
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  grid-template-rows:repeat(2,1fr);
-  gap:2px;
-}
-
-.win-icon div{
-  background:white;
-  opacity:0.9;
 }
 
 /* ===== Features ===== */
@@ -167,14 +174,32 @@ p{
   padding:20px;
   border-radius:16px;
   backdrop-filter: blur(10px);
-  transition:0.2s;
+  transition:0.25s;
 }
 
 .card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 0 20px rgba(120,120,255,0.2);
+  transform:translateY(-5px);
+  border-color:rgba(120,120,255,0.4);
+  box-shadow:0 0 25px rgba(120,120,255,0.25);
 }
 
+/* ===== Stats ===== */
+.stats{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  margin-top:40px;
+  font-size:14px;
+  color:#94a3b8;
+}
+
+.stat span{
+  display:block;
+  font-size:20px;
+  color:#7dd3fc;
+}
+
+/* ===== Footer ===== */
 footer{
   text-align:center;
   padding:20px;
@@ -188,40 +213,44 @@ footer{
 <body>
 
 <div class="nebula"></div>
+<div class="orb"></div>
+<div class="orb"></div>
 
 <div class="stars" id="stars"></div>
 
 <section class="hero">
   <h1>NEBULA</h1>
-  <p>The next-generation Minecraft launcher.</p>
+  <div class="subtitle">LAUNCH BEYOND LIMITS</div>
+  <p>A sleek, high-performance Minecraft launcher built for speed, simplicity, and power.</p>
 
   <div class="downloads">
-    <a href="downloads/NebulaSetup.exe" class="btn">
-      <div class="win-icon">
-        <div></div><div></div><div></div><div></div>
-      </div>
-      Download for Windows
-    </a>
+    <a href="downloads/NebulaSetup.exe" class="btn">Download for Windows</a>
+    <a href="#" class="btn secondary">Learn More</a>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><span>60+</span>FPS Boost</div>
+    <div class="stat"><span>100%</span>Free</div>
+    <div class="stat"><span>Fast</span>Updates</div>
   </div>
 </section>
 
 <section class="features">
   <h2>Why Nebula?</h2>
   <div class="feature-grid">
-    <div class="card"><h3>High FPS</h3><p>Smoother gameplay.</p></div>
-    <div class="card"><h3>Mods</h3><p>Built-in essentials.</p></div>
-    <div class="card"><h3>Clean UI</h3><p>Modern design.</p></div>
-    <div class="card"><h3>Secure</h3><p>Safe updates.</p></div>
+    <div class="card"><h3>High FPS</h3><p>Optimized for smoother gameplay.</p></div>
+    <div class="card"><h3>Mods Ready</h3><p>Built-in essential mods.</p></div>
+    <div class="card"><h3>Clean UI</h3><p>Modern and minimal design.</p></div>
+    <div class="card"><h3>Secure</h3><p>Safe and reliable updates.</p></div>
   </div>
 </section>
 
 <footer>© 2026 Nebula Launcher</footer>
 
 <script>
-// generate floating stars
 const stars = document.getElementById('stars');
 
-for(let i=0;i<60;i++){
+for(let i=0;i<70;i++){
   const s = document.createElement('div');
   s.className='star';
   s.style.top=Math.random()*100+'%';
